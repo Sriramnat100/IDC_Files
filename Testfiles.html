@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Sublima, sans-serif;
+      background-color: #1a1a2e;
+    }
+
+    .container--0- {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .container-0-1-0 {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      background-color: #030027;
+      color: #ffffff;
+      font-size: 65px;
+      font-weight: 800;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .carousel__slides {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 1200px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      gap: 15px;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      min-height: 300px; /* Minimum height for all images to ensure they fill more space */
+      object-fit: cover; /* Ensures images cover the area without stretching */
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom: 4px solid #6a7fc9; /* Add a solid line at the bottom of each image */
+    }
+
+    .card .card-title {
+      color: #6a7fc9;
+      font-size: 24px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .card .card-text {
+      color: #000000;
+      font-size: 18px;
+      font-weight: 200;
+      text-align: center;
+      border: 1px solid #223061;
+      padding: 10px;
+      height: 100px; /* Set a uniform height for all text boxes */
+      overflow: hidden; /* Hide overflow text to maintain height */
+      border-radius: 0; /* Make the text boxes square */
+    }
+
+    .button-container {
+      background-color: #030027;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 800;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    .award {
+      background-color: #f2f3d9;
+      color: #c16e70;
+      font-size: 14px;
+      font-weight: 800;
+      text-align: center;
+      padding: 5px 10px;
+      border-radius: 20px;
+      width: fit-content;
+    }
+  </style>
+</head>
+<body>
+  <div class="container--0-">
+    <div class="container-0-1-0">2022 First Place Winners 🥇</div>
+
+    <div class="carousel__slides">
+      <!-- EcoGrind Card -->
+      <div class="card">
+        <a href="https://devpost.com/software/ecogrind" target="_blank">
+          <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/455/048/datas/gallery.jpg" alt="EcoGrind">
+        </a>
+        <div class="card-title">EcoGrind</div>
+        <div class="card-text">Reduce food waste and create compost with EcoGrind - the modular sink grinder with a unique filtration system.</div>
+        <div class="button-container">View Project</div>
+        <div class="award">1st place</div>
+      </div>
+
+      <!-- Scrutch Card -->
+      <div class="card">
+        <a href="https://devpost.com/software/scrutch-e438pt" target="_blank">
+          <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/456/419/datas/gallery.jpg" alt="Scrutch">
+        </a>
+        <div class="card-title">Scrutch</div>
+        <div class="card-text">We explore the discomfort in using crutches, scooters, and other mobility aid devices and aim to develop a device to address all discomfort, combining their strengths.</div>
+        <div class="button-container">View Project</div>
+        <div class="award">1st place</div>
+      </div>
+
+      <!-- WeldAid Card -->
+      <div class="card">
+        <a href="https://devpost.com/software/weldaid" target="_blank">
+          <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/455/580/datas/gallery.jpg" alt="Weld Aid">
+        </a>
+        <div class="card-title">WeldAid</div>
+        <div class="card-text">Introducing WeldAid, an adjustable wrist rest on a tall pole stand to aid welders in completing accurate welds in challenging locations and improving weld quality.</div>
+        <div class="button-container">View Project</div>
+        <div class="award">1st place</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

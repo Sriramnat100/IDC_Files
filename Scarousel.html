@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .carousel {
+        width: 100%;
+        max-width: 900px;
+        margin: 40px auto;
+        border-radius: 10px;
+        overflow: hidden; /* Ensure no overflow outside container */
+        position: relative;
+    }
+
+    .carousel__slides {
+        display: flex;
+        transition: transform 0.5s ease;
+        width: 100%; /* Ensure slides fit container width */
+    }
+
+    .slide {
+        min-width: 100%;
+        box-sizing: border-box;
+        padding: 0; /* Remove any extra padding to prevent overflow */
+    }
+
+    .column img {
+        width: 90%;  /* Adjusted to fit within bounds */
+        height: auto;
+        max-height: 300px; /* Limit the height for a more uniform display */
+        object-fit: cover;
+        border-radius: 15px;
+        border: 2px solid black;
+}
+
+        .gold-background { background-color: #f8f4dc; }
+        .silver-background { background-color: #d0cccc; }
+
+        .carousel__title, .second_car_title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 1px;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .carousel__title { font-size: 65px; color: #dc9d81; }
+        .second_car_title { font-size: 60px; color: #223061; }
+
+        .row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    flex-wrap: wrap; /* Allows images to wrap on smaller screens */
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    text-align: center;
+}
+        .column img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 2px solid black;
+        }
+
+        .carousel__description, .second_car_desc {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 1.5rem;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .carousel__description { color: #dc9d81; }
+        .second_car_desc { color: #223061; }
+
+        .carousel__nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            font-size: 2em;
+            padding: 15px;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .carousel__nav:hover { background-color: rgba(0, 0, 0, 0.8); }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        .carousel__dots {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .carousel__dots span {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .carousel__dots .active { background-color: #4CAF50; }
+
+        @media (max-width: 768px) {
+            .column { width: 90%; margin-bottom: 15px; }
+            .row { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Carousel Structure -->
+    <div class="carousel">
+        <div class="carousel__slides">
+            <!-- First slide with a gold background -->
+            <div class="slide gold-background">
+                <h2 class="carousel__title">2022 First Place Winners 🥇</h2>
+                <div class="row">
+                    <div class="column">
+                        <a href="https://devpost.com/software/ecogrind" target="_blank">
+                            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/455/048/datas/gallery.jpg" alt="EcoGrind">
+                        </a>
+                        <div class="carousel__description">EcoGrind</div>
+                    </div>
+                    <div class="column">
+                        <a href="https://devpost.com/software/scrutch-e438pt" target="_blank">
+                            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/456/419/datas/gallery.jpg" alt="Scrutch">
+                        </a>
+                        <div class="carousel__description">Scrutch</div>
+                    </div>
+                    <div class="column">
+                        <a href="https://devpost.com/software/weldaid" target="_blank">
+                            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/455/580/datas/gallery.jpg" alt="Weld Aid">
+                        </a>
+                        <div class="carousel__description">Weld Aid</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Second slide with a silver background -->
+            <div class="slide silver-background">
+                <h2 class="second_car_title">2023 Second Place Winners 🥈</h2>
+                <div class="row">
+                    <div class="column">
+                        <a href="https://devpost.com/software/team-we-ball" target="_blank">
+                            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/456/084/datas/gallery.jpg" alt="MDX-250">
+                        </a>
+                        <div class="second_car_desc">MDX-250</div>
+                    </div>
+                    <div class="column">
+                        <a href="https://devpost.com/software/stridefree" target="_blank">
+                            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/456/117/datas/gallery.jpg" alt="Stride Free">
+                        </a>
+                        <div class="second_car_desc">Stride Free</div>
+                    </div>
+                    <div class="column">
+                        <a href="https://devpost.com/software/samaritan-aerospace" target="_blank">
+                            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/456/195/datas/gallery.jpg" alt="Samaritan Aerospace">
+                        </a>
+                        <div class="second_car_desc">Samaritan Aerospace</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel__nav prev">&#10094;</button>
+        <button class="carousel__nav next">&#10095;</button>
+    </div>
+
+    <div class="carousel__dots">
+        <span class="active"></span>
+        <span></span>
+    </div>
+
+    <script>
+        const slidesContainer = document.querySelector('.carousel__slides');
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.carousel__dots span');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        function updateCarousel() {
+            slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel();
+            });
+        });
+    </script>
+
+</body>
+</html>
