@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carousel with Custom Arrows</title>
+  <link href="https://fonts.googleapis.com/css2?family=Sublima&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  
+  <style>
+    body {
+      margin: 0;
+      font-family: Sublima, sans-serif;
+      background-color: #404d77;
+      text-align: center;
+      padding-right: 50px;
+    }
+
+    .container--0- {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      gap: 20px;
+      width: 100%;
+    }
+
+    .container-0-1-0 {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      background-color: #404d77;
+      color: #ffffff;
+      font-family: "Poppins", sans-serif;
+      font-style: normal;
+      font-size: 65px;
+      font-weight: 650;
+      padding: 10px;
+      text-align: center;
+    }
+
+    div.container-0-1-0 {border-bottom:8px solid white; padding-bottom:15px; position:relative; width: 700px;}
+    div.container-0-1-0:before, div.container-0-1-0:after { position:absolute; bottom:-15px; left:-5px; height:25px; width:25px; background:white; content:""; border-radius:20px;}
+    div.container-0-1-0:after {right:auto; left:700px;}
+
+    .carousel {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .carousel__slides {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      min-width: 100%;
+      box-sizing: border-box;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      gap: 0px;
+      overflow: hidden;
+      margin: 0 10px;
+      padding-bottom: 20px;
+      /* bottom: 30px; */
+    }
+
+    .card img {
+      width: 100%;
+      height: 250px;
+      /* min-height: 300px; */
+      object-fit: cover;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      padding-bottom: -10px;
+      /* border-bottom: 1px solid black; */
+    }
+    
+    .card_after {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      background-color: white;
+      /* padding: 10px; */
+      text-align: center;
+      border-top: 1px solid black;
+
+    }
+
+    .card .card-title {
+      padding-top: 15px;
+      color: #6a7fc9;
+      font-size: 24px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .card .card-text {
+      color: #000000;
+      font-size: 18px;
+      font-weight: 200;
+      text-align: center;
+      border-top: 1px solid white;
+      border-bottom: 1px solid white;
+      padding: 10px;
+      height: 100px;
+      overflow: hidden;
+    }
+
+    .button-container {
+      background-color: #030027;
+      color: #ffffff;
+      font-size: 18px;
+      font-weight: 800;
+      text-align: center;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+    }
+
+    .award {
+      background-color: #f2f3d9;
+      color: #c16e70;
+      font-size: 14px;
+      font-weight: 800;
+      text-align: center;
+      padding: 5px 10px;
+      border-radius: 20px;
+      width: fit-content;
+    }
+
+    /* Custom Arrow Buttons */
+    .carousel__nav {
+      position: absolute;
+      top: 90%;
+      transform: translateY(-50%);
+      background-color: transparent;
+      border: none;
+      z-index: 1;
+    }
+
+    .prev, .next {
+      display: inline-block;
+      border-radius: 50%;
+    }
+
+    .prev .left, .next .right {
+      display: inline-block;
+      width: 4em;
+      height: 4em;
+      border: 0.5em solid #ffffff;
+      border-radius: 50%;
+    }
+
+    .left:after, .right:after {
+      content: '';
+      display: inline-block;
+      width: 1.4em;
+      height: 1.4em;
+      border-top: 0.5em solid #ffffff;
+      border-right: 0.5em solid #ffffff;
+      position: relative;
+      top: 1em;
+    }
+
+    .left:after {
+      margin-left: 0.6em;
+      transform: rotate(-135deg);
+    }
+
+    .right:after {
+      margin-left: -0.6em;
+      transform: rotate(45deg);
+    }
+
+    /* Hover effect */
+    .prev:hover .left, .next:hover .right {
+      border: 0.5em solid #c16e70;
+    }
+
+    .prev:hover .left:after, .next:hover .right:after {
+      border-top: 0.5em solid #c16e70;
+      border-right: 0.5em solid #c16e70;
+    }
+
+    .prev { left: 10px; }
+    .next { right: 10px; }
+
+    /* Dots Indicator */
+    .carousel__dots {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .carousel__dots span {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .carousel__dots .active { background-color: #f2f3da; 
+    }
+    a {
+        text-decoration: none;
+        color: white;
+    }
+    a:visited {
+        color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container--0-">
+    <div class="container-0-1-0">2024 Winners</div>
+    <br>
+    <!-- Carousel Structure -->
+    <div class="carousel">
+      <div class="carousel__slides">
+        <!-- Slide 1 -->
+        <div class="slide">
+          <div class="card">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/002/822/118/datas/medium.jpg" alt="ElectroGlide">
+            <div class="card_after"></div>
+            <div class="card-title">ElectroGlide</div>
+            <div class="card-text">We believe the future of transportation is for everyone. Introducing ElectroGlide, a motorized attachment for wheelchair users.</div>
+            <div class="button-container"><a href="https://devpost.com/software/electroglide">View Project</a></div>
+            <!-- <div class="award">1st place</div> -->
+          </div>
+          <div class="card">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/002/822/240/datas/medium.jpg" alt="Allergen Tongs">
+            <div class="card_after"></div>
+            <div class="card-title">Allergen Tongs</div>
+            <div class="card-text">Take your everyday tongs and turn them into cross-contamination killers. Using sensors you can grab any food and check if it is an allergen.</div>
+            <div class="button-container"><a href="https://devpost.com/software/allergen-tongs">View Project</a></div>
+            <!-- <div class="award">1st place</div> -->
+          </div>
+          <div class="card">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/822/477/datas/medium.png" alt="Green Street">
+            <div class="card_after"></div>
+            <div class="card-title">Green Street</div>
+            <div class="card-text">Ever noticed the lack of recycling bins on Green Street? Had to walk another block to find the recycling bin? The Green Street Can is the solution!</div>
+            <div class="button-container"><a href="https://devpost.com/software/green-street">View Project</a></div>
+            <!-- <div class="award">1st place</div> -->
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+          <div class="card">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/824/185/datas/medium.jpg" alt="EcoDropoff">
+            <div class="card_after"></div>
+            <div class="card-title">EcoDropoff</div>
+            <div class="card-text">EcoDropoff transforms cafeteria waste management using advanced imaging to identify and separate leftovers. Go green, save, and innovate.</div>
+            <div class="button-container"><a href="https://devpost.com/software/ecodropoff">View Project</a></div>
+            <!-- <div class="award">2nd place</div> -->
+          </div>
+          <div class="card">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_photos/002/825/321/datas/medium.png" alt="USL">
+            <div class="card_after"></div>
+            <div class="card-title">USL Smart Dustbin Lid</div>
+            <div class="card-text">It is an easy-to add-on to a regular dustbin that identifies whether items are recyclable or not and based on that opens or locks the flap.</div>
+            <div class="button-container"><a href="https://devpost.com/software/smart-dustbin-lid">View Project</a></div>
+            <!-- <div class="award">2nd place</div> -->
+          </div>
+          <div class="card">
+            <img src="https://d112y698adiu2z.cloudfront.net/photos/production/software_thumbnail_photos/002/822/168/datas/medium.png" alt="RoboConda">
+            <div class="card_after"></div>
+            <div class="card-title">RoboConda</div>
+            <div class="card-text">Revolutionary self-recycling recycling robot.</div>
+            <div class="button-container"><a href="https://devpost.com/software/roboconda">View Project</a></div>
+            <!-- <div class="award">2nd place</div> -->
+          </div>
+        </div>
+      </div>
+
+      <button class="carousel__nav prev"><span class="left"></span></button>
+      <button class="carousel__nav next"><span class="right"></span></button>
+    </div>
+
+    <div class="carousel__dots">
+      <span class="active"></span>
+      <span></span>
+    </div>
+  </div>
+
+  <script>
+    const slidesContainer = document.querySelector('.carousel__slides');
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.carousel__dots span');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+
+    function updateCarousel() {
+      slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[currentIndex].classList.add('active');
+    }
+
+    nextButton.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateCarousel();
+    });
+
+    prevButton.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+      });
+    });
+  </script>
+</body>
+</html>
